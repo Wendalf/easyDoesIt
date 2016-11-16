@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
   def create
     CSV.foreach(params[:leads].path, headers: true) do |lead|
       binding.pry
-      Patient.create
+      Patient.create(name: lead[0] + " " + lead[1])
     end
   end
 
