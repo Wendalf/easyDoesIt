@@ -3,11 +3,15 @@ class PatientsController < ApplicationController
   require 'csv'
 
   def new
+    # binding.pry
+    @user = User.find_by(id: params[:user_id])
     @patient = Patient.new
+    render "new"
   end
 
 
   def create
+    binding.pry
     if params[:leads]
       CSV.foreach(params[:leads].path, headers: true) do |lead|
         @patient = Patient.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
@@ -21,8 +25,14 @@ class PatientsController < ApplicationController
 end
 
 
+  def show
+    @patient = Patient.find_by(id: params[:id])
+  end
 
 
+  def index
+    @user = User.find_by(id: params[:user_id])
+  end
 
 
 
