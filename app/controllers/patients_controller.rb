@@ -10,12 +10,13 @@ class PatientsController < ApplicationController
   def create
     if params[:leads]
       CSV.foreach(params[:leads].path, headers: true) do |lead|
-        Patient.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
+        @patient = Patient.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
       end
-    end
   else
-    Patient.create(patient_params)
+    @patient = Patient.create(patient_params)
   end
+  redirect_to patient_path(@patient)
+end
 
 
 
