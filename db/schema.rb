@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20161116202558) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.integer  "doctor_id"
+    t.integer  "user_id"
     t.string   "name"
     t.string   "medical_history"
     t.string   "height"
