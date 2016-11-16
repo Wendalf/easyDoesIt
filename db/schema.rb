@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20161116154955) do
     t.string   "medical_history"
     t.string   "height"
     t.string   "weight"
-    t.string   "health_histroy"
+    t.string   "health_history"
     t.string   "phone_number"
     t.string   "address"
     t.integer  "age"
