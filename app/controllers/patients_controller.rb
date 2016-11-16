@@ -11,7 +11,7 @@ class PatientsController < ApplicationController
 
 
   def create
-    binding.pry
+    # binding.pry
     if params[:leads]
       CSV.foreach(params[:leads].path, headers: true) do |lead|
         @patient = Patient.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
@@ -19,7 +19,8 @@ class PatientsController < ApplicationController
       end
   else
     @patient = Patient.create(patient_params)
-    @patient.user_id = current_user.id
+    binding.pry
+    @patient.user = current_user
   end
   redirect_to patient_path(@patient)
 end
@@ -31,7 +32,7 @@ end
 
 
   def index
-    @user = User.find_by(id: params[:user_id])
+    @user = current_user
   end
 
 

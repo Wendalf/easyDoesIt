@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :prescriptions
   resources :drugs
   resources :patients
-  root to: 'welcome#index'
+  root to: 'patients#index'
 
   resources :users, only: [:show] do
     resources :patients

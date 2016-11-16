@@ -1,5 +1,5 @@
-<h2> Welcome <%= @user.name%>. The Following Is List of Your Patients </h2>
+<h2> Welcome <%= @user.email%>. The Following Is List of Your Patients </h2>
 
 
 
-<%= button_to "Add Patient", action: "new", method: "get" %>
+<%= link_to "Add Patient", action: "new", :method => "get" %>
