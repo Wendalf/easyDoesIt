@@ -5,9 +5,9 @@ class AlertScheduler
     alerts = Alert.all
 
     alerts.each do |alert|
-      # if alert.time == Time.now.to_datetime
+      if alert.time == Time.now.to_datetime
         self.send_alert(alert)
-      # end
+      end
     end
 
     puts "method is being called." 

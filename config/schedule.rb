@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 every 1.minute do
-  runner "AlertScheduler.check_and_send_alert", :environment => "development"
+  rake "send_alert" 
 end
 
