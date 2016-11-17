@@ -3,3 +3,7 @@
 
 
 <%= link_to "Add Patient", action: "new", :method => "get" %>
+<% @user.patients.each do |patient|%>
+<%= patient.name %>
+<br>
+<%end%>
