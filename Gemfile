@@ -35,6 +35,8 @@ gem 'delayed_job_active_record'
 # Need daemons to start delayed_job
 gem 'daemons'
 
+# Use whenever gem to check if alert should be fired
+gem 'whenever', :require => false
 # Use workless to use less workers on heroku
 gem "workless", "~> 1.2.2"
 
