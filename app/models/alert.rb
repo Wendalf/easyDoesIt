@@ -1,3 +1,5 @@
 class Alert < ApplicationRecord
-  belongs_to :drug_prescription
+  belongs_to :patient
+  belongs_to :drug
 end
+

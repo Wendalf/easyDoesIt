@@ -16,13 +16,11 @@ ActiveRecord::Schema.define(version: 20161117162318) do
   enable_extension "plpgsql"
 
   create_table "alerts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "phone_number"
+    t.integer  "patient_id"
+    t.integer  "drug_id"
     t.datetime "time"
-    t.string   "time_zone"
-    t.integer  "drug_prescription_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "drug_prescriptions", force: :cascade do |t|
