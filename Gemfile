@@ -29,6 +29,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Twilio ruby gem to send text alerts
 gem 'twilio-ruby'
 
+# Use delayed job for running background jobs
+gem 'delayed_job_active_record'
+
+# Need daemons to start delayed_job
+gem 'daemons'
+
+# Use workless to use less workers on heroku
+gem "workless", "~> 1.2.2"
+
 gem 'faraday'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -41,8 +50,10 @@ gem 'faraday'
 group :development, :test do
   gem 'faker', '~> 1.6', '>= 1.6.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # gem 'byebug', platform: :mri
+ 
+  # Use pry do debug.
   gem 'pry'
-  gem 'dotenv-rails'
 end
 
 group :development do

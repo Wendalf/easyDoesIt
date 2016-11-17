@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     from_number = params["From"]
     boot_twilio
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV["TWILIO_FROM_NUMBER"],
       to: from_number,
       body: "Hello there, thanks for texting me. Your number is #{from_number}."
     )
@@ -17,8 +17,8 @@ class MessagesController < ApplicationController
   private
  
   def boot_twilio
-    account_sid = Rails.application.secrets.twilio_sid
-    auth_token = Rails.application.secrets.twilio_token
+    account_sid = ENV["TWILIO_ACCOUNT_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
 
