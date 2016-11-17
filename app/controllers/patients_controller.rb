@@ -51,13 +51,18 @@ end
 end
 
 def download_csv
-  CSV.open(fn, 'w') do |csv|
+  # binding.pry
+  patients = params[:patients].split(',')
+  @patients = current_user.patients.where(:name => patients)
+  CSV.open("patients.csv", 'w') do |csv|
     csv << Patient.column_names
-    Model.where(query).each do |m|
+    @patients.each do |m|
       csv << m.attributes.values
     end
   end
-
+  respond_to do |f|
+    f.json{render :json => @patients.to_json}
+  end
 end
 
 

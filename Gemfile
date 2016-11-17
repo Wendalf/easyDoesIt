@@ -43,6 +43,7 @@ gem "workless", "~> 1.2.2"
 gem 'faraday'
 gem 'devise'
 gem 'rb-readline'
+gem 'pry-coolline' 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -55,7 +56,7 @@ group :development, :test do
   gem 'faker', '~> 1.6', '>= 1.6.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platform: :mri
- 
+
   # Use pry do debug.
   gem 'pry'
 end

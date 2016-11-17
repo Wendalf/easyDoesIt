@@ -16,7 +16,7 @@
   <option value="medical_history">Medical History</option>
 </select>
   <%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
-<button type="button" name="button" onclick="patient()">Search</button>
+<button type="button" name="button" onclick="patient()">Search</button> <br>
 
 <% end %>
 
@@ -32,3 +32,5 @@
   <%end%>
 </ul>
 </div>
+<br>
+<button type="button" name="button" onclick="download_patients()">Download</button>
