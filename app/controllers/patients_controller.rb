@@ -29,8 +29,21 @@ end
 
 
   def index
+    if params[:criteria]
+      @user = current_user
+      criteria = params[:criteria]
+      input = params[:input]
+      @patients = current_user.patients.where("#{criteria} = #{input}")
+    binding.pry
+      respond_to do |f|
+        f.json{render :json => @patients}
+        f.html{redirect_to user_patients_path(current_user)}
+
+      end
+    else
     @user = current_user
   end
+end
 
 
 

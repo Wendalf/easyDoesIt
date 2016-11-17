@@ -1,5 +1,14 @@
 <h2> Welcome <%= @user.email%>. The Following Is List of Your Patients </h2>
 
+<%= form_tag(user_patients_path(@user), :method => "get", id: "search-form") do %>
+<select id="criteria"> <option value="name">Name</option></select>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
+<button type="button" name="button" onclick="patient()">Search</button>
+
+<% end %>
+
+<br><br>
+
 
 
 <%= link_to "Add Patient", action: "new", :method => "get" %>
