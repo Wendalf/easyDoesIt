@@ -1,2 +1,7 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb, Hi Wendy! Hi again</p>
+Homepage
+<% if !current_user  %>
+<%= link_to "Log In", new_user_session_path %>
+<%= link_to "Sign Up", new_user_registration_path %>
+<% else %>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+<%end%>
