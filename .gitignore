@@ -22,3 +22,7 @@ config/secrets.yml
 
 # Ignore .env file
 .env
+app/.env
+
+# Ignore application configuration
+/config/application.yml
