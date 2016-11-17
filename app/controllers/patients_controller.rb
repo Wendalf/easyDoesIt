@@ -33,11 +33,12 @@ end
       @user = current_user
       criteria = params[:criteria]
       input = params[:input]
-      @patients = current_user.patients.where("#{criteria} = #{input}")
-    binding.pry
+      # @patients = current_user.patients.where("name" =>["isuru"])
+      @patients = current_user.patients.where("#{criteria}" => ["#{input}"])
+    # binding.pry
       respond_to do |f|
-        f.json{render :json => @patients}
-        f.html{redirect_to user_patients_path(current_user)}
+        f.json{render :json => @patients.to_json}
+        # f.html{redirect_to user_patients_path(current_user)}
 
       end
     else
