@@ -15,7 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-gem 'pry'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -25,6 +25,20 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+# Use Twilio ruby gem to send text alerts
+gem 'twilio-ruby'
+
+# Use delayed job for running background jobs
+gem 'delayed_job_active_record'
+
+# Need daemons to start delayed_job
+gem 'daemons'
+
+# Use whenever gem to check if alert should be fired
+gem 'whenever', :require => false
+# Use workless to use less workers on heroku
+gem "workless", "~> 1.2.2"
 
 gem 'faraday'
 gem 'devise'
@@ -40,7 +54,10 @@ gem 'rb-readline'
 group :development, :test do
   gem 'faker', '~> 1.6', '>= 1.6.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  # gem 'byebug', platform: :mri
+ 
+  # Use pry do debug.
+  gem 'pry'
 end
 
 group :development do

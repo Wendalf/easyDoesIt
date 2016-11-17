@@ -19,3 +19,6 @@
 
 # Ignore secrets.yml
 config/secrets.yml
+
+# Ignore .env file
+.env

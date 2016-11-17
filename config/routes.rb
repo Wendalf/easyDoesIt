@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resource :messages do
+    collection do
+      post 'reply'
+    end
+  end
+
+
   devise_for :users
   resources :users
   resources :prescriptions
