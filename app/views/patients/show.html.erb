@@ -1,1 +1,34 @@
-<%= @patient.name%>
+<%= link_to "Edit Medical History", edit_user_patient_path(@patient.user, @patient) %>
+<br></br>
+
+
+
+Medical History
+
+Name: <%= @patient.name%>
+<br>
+Age: <%= @patient.age %>
+<br>
+Sex: <%= @patient.sex %>
+<br>
+Email: <%= @patient.email %>
+<br>
+Phone Number: <%= @patient.phone_number %>
+<br>
+Address: <%= @patient.address %>
+<br>
+Medications Taken: <%= @patient.medical_history%>
+<br>
+Height: <%= @patient.height %>
+<br>
+Weight: <%= @patient.weight %>
+<br>
+Health Conditions:  <%= @patient.health_history %>
+<br>
+Concerns: <%= @patient.note %>
+
+<br></br>
+
+Current Medications
+<br></br>
+<%= @patient.medical_history %>

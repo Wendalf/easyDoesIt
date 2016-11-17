@@ -1,10 +1,5 @@
 $(document).ready(function(){
 
-// search();
-
-
-
-
 })
 
 
@@ -24,7 +19,6 @@ function patient(){
       "input": input,
     }
   }).done(function(data){
-  // debugger;
     for(var i=0; i<data.length; i++){
       $("#patient_list ul").html('')
       $("#patient_list ul").append(`<li>${data[i].name}</li>`);

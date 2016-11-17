@@ -3,7 +3,6 @@ class PatientsController < ApplicationController
   require 'csv'
 
   def new
-    # binding.pry
     @user = User.find_by(id: params[:user_id])
     @patient = Patient.new
     render "new"
@@ -33,18 +32,29 @@ end
       @user = current_user
       criteria = params[:criteria]
       input = params[:input]
-      # @patients = current_user.patients.where("name" =>["isuru"])
       @patients = current_user.patients.where("#{criteria}" => ["#{input}"])
-    # binding.pry
       respond_to do |f|
         f.json{render :json => @patients.to_json}
-        # f.html{redirect_to user_patients_path(current_user)}
-
       end
     else
     @user = current_user
   end
 end
+
+
+
+  def edit
+    binding.pry
+    @patient = Patient.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user_id])
+  end
+
+  def update
+    @patient = Patient.find_by(id: params[:id])
+    @patient.update(patient_params)
+    redirect_to user_patient_path(@patient.user, @patient)
+  end
+
 
 
 
