@@ -27,7 +27,7 @@
 
 <ul>
   <% @user.patients.each do |patient|%>
-  <li><%= link_to patient.name, user_patient_path(patient.user, patient)%></li>
+  <li><a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>"><%=patient.name%></a></li>
   <%end%>
 </ul>
 </div>

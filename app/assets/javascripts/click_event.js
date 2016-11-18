@@ -22,7 +22,7 @@ function patient(){
   }).done(function(data){
     for(var i=0; i<data.length; i++){
       $("#patient_list ul").html('')
-      $("#patient_list ul").append(`<li>${data[i].name}</li>`);
+      $("#patient_list ul").append(`<li><a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a></li>`);
     }
 
 

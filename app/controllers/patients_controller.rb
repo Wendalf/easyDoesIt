@@ -28,6 +28,7 @@ end
 
 
   def index
+    if current_user
     if params[:criteria]
       @user = current_user
       criteria = params[:criteria]
@@ -39,6 +40,9 @@ end
     else
     @user = current_user
   end
+else
+  redirect_to welcome_path
+end
 end
 
 
