@@ -48,7 +48,6 @@ end
 
 
   def edit
-    binding.pry
     @patient = Patient.find_by(id: params[:id])
     @user = User.find_by(id: params[:user_id])
   end

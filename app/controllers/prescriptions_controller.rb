@@ -20,7 +20,6 @@ class PrescriptionsController < ApplicationController
 
 
   def show
-    binding.pry
     @prescription = Prescription.find_by(id: params[:id])
   end
 
