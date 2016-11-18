@@ -18,3 +18,16 @@
 //     console.log(data.results);
 //   });
 // }
+
+
+function search(){
+  var criteria = $
+  $.ajax({
+  type: 'get',
+  url: `http://maps.googleapis.com/maps/api/geocode/json?address=${location}`,
+  dataType: 'json'
+}).done(function(data) {
+    var location = data["results"][0]["geometry"]["location"]
+    find_pharmacy(location.lat,location.lng)
+});
+}

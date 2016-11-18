@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :drugs
   resources :alerts
   resources :patients
+
+  get '/:user_id/download_csv' => "patients#download_csv"
+
+
   root to: 'patients#index'
   get '/home' => "application#home", as: "welcome"
 
@@ -25,11 +29,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :patients
   end
-
-
-
-
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

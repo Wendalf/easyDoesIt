@@ -7,6 +7,7 @@ $(document).ready(function(){
 
 
 function patient(){
+
   event.preventDefault();
   var criteria = $("#criteria").val()
   var input = $("#search_patient").val();
@@ -20,13 +21,41 @@ function patient(){
       "input": input,
     }
   }).done(function(data){
+  
+    if(data.length !== 0){
     for(var i=0; i<data.length; i++){
       $("#patient_list ul").html('')
       $("#patient_list ul").append(`<li><a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a></li>`);
     }
+  }else{
+      $("#patient_list ul").html('')
+  }
 
 
   })
+}
+
+
+function download_patients(){
+    event.preventDefault();
+    var optionTexts = [];
+    var userId = $("#user_id").attr('value')
+  var patients = $("li").each(function() { optionTexts.push($(this).text()) });
+  for(var i =0; i<patients.length;i++){
+    optionTexts.push(patients[i].innerHTML)
+  }
+  var url =`http://localhost:3000/${userId}/download_csv`
+      $.ajax({
+        type: 'get',
+        url: url,
+        dataType: 'json',
+        data: {
+          "patients": `${optionTexts}`
+        }
+      }).done(function(data){
+        alert("file downloaded");
+      })
+
 }
 
 function buildFormField(){
@@ -38,10 +67,3 @@ function buildFormField(){
   })
 
 }
-
-
-// function setTimeButton(){
-//   $("#drugform").on('click', '.set_time', function(event){
-//     document.getElementById('id01').style.display='block';
-//   })
-// }
