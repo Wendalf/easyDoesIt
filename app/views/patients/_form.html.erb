@@ -1,0 +1,39 @@
+<% if @patient.id %>
+  <% submit = "Edit Medical History" %>
+<% else%>
+  <% submit = "Create Medical History" %>
+<%end%>
+
+
+
+
+
+<h1>Enter new Patient Information or Upload Medical History</h1>
+  <%= form_for(@patient) do |f| %>
+  Name: <%= f.text_field :name %>
+  <br>
+  Height: <%= f.text_field :height %>
+  <br>
+  Wegiht: <%= f.text_field :weight %>
+  <br>
+  Sex: <%= f.text_field :sex %>
+  <br>
+  DOB:  <%= f.text_field :dob %>
+  <br>
+  Phone Number: <%= f.text_field :phone_number %>
+  <br>
+  Address: <%= f.text_field :address %>
+  <br>
+  Email: <%= f.text_field :email %>
+  <br>
+  Health Conditions: <%= f.text_field :health_history %>
+  <br>
+  Medication History: <%= f.text_field :medical_history%>
+  <br>
+  Note: <%= f.text_area :note %>
+  <br>
+  <%=f.submit submit %>
+<%end%>
+
+
+<h2></h2>

@@ -1,9 +1,5 @@
 $(document).ready(function(){
-
-// search();
-
-
-
+  buildFormField();
 
 })
 
@@ -11,6 +7,7 @@ $(document).ready(function(){
 
 
 function patient(){
+
   event.preventDefault();
   var criteria = $("#criteria").val()
   var input = $("#search_patient").val();
@@ -24,16 +21,20 @@ function patient(){
       "input": input,
     }
   }).done(function(data){
-  // debugger;
-   var searched_by = $("#criteria").attr('value')
-    $("#patient_list ul").html('')
+  
+    if(data.length !== 0){
     for(var i=0; i<data.length; i++){
-      $("#patient_list ul").append(`<li>${data[i]['name']}</li>`);
+      $("#patient_list ul").html('')
+      $("#patient_list ul").append(`<li><a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a></li>`);
     }
+  }else{
+      $("#patient_list ul").html('')
+  }
 
 
   })
 }
+
 
 function download_patients(){
     event.preventDefault();
@@ -54,5 +55,15 @@ function download_patients(){
       }).done(function(data){
         alert("file downloaded");
       })
+
+}
+
+function buildFormField(){
+  $("#drug").click(function(event){
+    event.preventDefault();
+    var target = '<p>Specify Drug Name: <input type="text" name="prescription[drugs][name][]" id="prescription_drugs_name"></p>'
+    $("#drugform").append(target)
+
+  })
 
 }

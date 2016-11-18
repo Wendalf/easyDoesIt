@@ -11,11 +11,19 @@ Rails.application.routes.draw do
   resources :users
   resources :prescriptions
   resources :drugs
+  resources :alerts
   resources :patients
 
-  root to: 'application#home'
   get '/:user_id/download_csv' => "patients#download_csv"
 
+
+  root to: 'patients#index'
+  get '/home' => "application#home", as: "welcome"
+
+  # get '/patients/:id/precriptions/new' => "prescriptions#new", as: "new_patient_prescriptions"
+  resources :patients, only: [:show] do
+    resources :prescriptions
+  end
 
 
   resources :users, only: [:show] do

@@ -28,25 +28,29 @@ end
 
 
   def index
+    if current_user
     criteria = params[:criteria]
     input = params[:input]
 
-    if input
-      if criteria == "all"
-        @patients = current_user.patients.all
-      elsif criteria == "medical_history"
-        @patients = current_user.patients.all.where('medical_history LIKE ?', "%#{input}%").all
-      elsif criteria == "health_history"
-        @patients = current_user.patients.all.where('health_history LIKE ?', "%#{input}%").all
+      if input
+        if criteria == "all"
+          @patients = current_user.patients.all
+        elsif criteria == "medical_history"
+          @patients = current_user.patients.all.where('medical_history LIKE ?', "%#{input}%").all
+        elsif criteria == "health_history"
+          @patients = current_user.patients.all.where('health_history LIKE ?', "%#{input}%").all
+        else
+          @user = current_user
+          @patients = current_user.patients.where("#{criteria}" => ["#{input}"])
+        end
+        respond_to do |f|
+          f.json{render :json => @patients.to_json}
+        end
       else
-        @user = current_user
-        @patients = current_user.patients.where("#{criteria}" => ["#{input}"])
-      end
-      respond_to do |f|
-        f.json{render :json => @patients.to_json}
-      end
-    else
-    @user = current_user
+      @user = current_user
+    end
+  else
+    redirect_to welcome_path
   end
 end
 

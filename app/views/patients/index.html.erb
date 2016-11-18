@@ -1,15 +1,17 @@
-<head>
-  <LINK href="app/assets/stylesheets/patients.scss" rel="stylesheet" type="text/css">
-</head>
+<h2> Welcome <%= @user.email%>. The Following Is List of Your Patients </h2>
 
-<input type="hidden" id="user_id" value ="<%=@user.id%>">
+<%= form_tag patients_path, multipart: true do %>
+<%= file_field_tag :leads %>
+<%= submit_tag "Upload CSV File" %>
+<%end%>
 
-<%= form_tag(user_patients_path(@user), :method => "get", :name => "search", id: "search-form") do %>
+<br></br>
 
-<% end %>
-<div id="myDIV" class="header">
-<h2> Patients List </h2>
-  <select class="sel" id="criteria">
+
+
+
+<%= form_tag(user_patients_path(@user), :method => "get", id: "search-form") do %>
+<select class="sel" id="criteria">
     <option value="all">All</option>
     <option value="name">Name</option>
     <option value="height">Height</option>
@@ -22,12 +24,14 @@
     <option value="dob">Date of Birth</option>
     <option value="medical_history">Medical History</option>
   </select>
- <input type="text" id="search_patient" placeholder="Search Patients...">
-  <!-- <span onclick="patient()" class="addBtn">Search</span> -->
-  <button onclick="patient()" class="addBtn" type="button" name="button">Search</button>
-</div>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
+<button type="button" name="button" onclick="patient()">Search</button>
+
+<% end %>
 
 <br><br>
+
+
 
 
 <div id="patient_list">
@@ -35,14 +39,8 @@
 
 <ul>
   <% @user.patients.each do |patient|%>
-  <li><%= patient.name %></li>
+  <li><a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>"><%=patient.name%></a></li>
   <%end%>
 </ul>
 </div>
-<br>
 <button class="dlBtn" type="button" name="button" onclick="download_patients()">Download</button>
-
-
-<!--
-<%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
-<button type="button" name="button" onclick="patient()">Search</button> <br> -->

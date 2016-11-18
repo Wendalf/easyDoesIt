@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 
 
-gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -36,14 +35,17 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 # Use whenever gem to check if alert should be fired
-gem 'whenever', :require => false
+gem 'whenever'
 # Use workless to use less workers on heroku
 gem "workless", "~> 1.2.2"
 
 gem 'faraday'
 gem 'devise'
+
 gem 'rb-readline'
 gem 'pry-coolline' 
+gem 'figaro'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
