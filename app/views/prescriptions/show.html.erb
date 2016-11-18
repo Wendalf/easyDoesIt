@@ -15,12 +15,16 @@
        <div class="w3-center">
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
         <br></br>
-
-        <p>Select a Time <input type="time" name="usr_time" id="time1">
-            <p>Select a Time <input type="time" name="usr_time" id="time2">
-              <p>Select a Time <input type="time" name="usr_time" id="time3">
+        <h4>Please Select Time for each Dosage</h4>
+        <%=form_for(Alert.new) do |f| %>
+        <input type="hidden" name="patient_id" value="<%=@prescription.patient.id%>">
+        <input type="hidden" name="drug_id" value="<%=drug.id%>">
+        <p>Select a Time <input type="time" name="time[]" id="time1">
+            <p>Select a Time <input type="time" name="time[]" id="time2">
+              <p>Select a Time <input type="time" name="time[]" id="time3">
                 <br></br>
-                  <input type="submit"></p>
+                  <%=f.submit "Add Time"%></p>
+                  <%end%>
                   <br></br>
         </div>
     </div>
