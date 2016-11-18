@@ -10,7 +10,7 @@ class AlertsController < ApplicationController
 
     t = params["time"]
     t.each do |time|
-      if time != " "
+      if time != ""
        result = time.to_datetime
        @alert = Alert.create(time: result, patient_id: params["patient_id"], drug_id: params["drug_id"])
       end
