@@ -10,12 +10,15 @@ class PrescriptionsController < ApplicationController
 
 
   def create
-    @prescription = Prescription.create(experition_date: params["bday"])
+      @prescription = Prescription.create(experition_date: params["bday"])
+      patient= Patient.find_by(id: params["patient_id"])
+      @prescription.patient_id = patient.id
+      @prescription.save
       drugs = params["prescription"]["drugs"]["name"]
       drugs.each do |drug|
-      @prescription.drugs.find_or_create_by(name: drug)
-    end
-    redirect_to prescription_path(@prescription)
+        @prescription.drugs.find_or_create_by(name: drug)
+      end
+      redirect_to prescription_path(@prescription)
   end
 
 

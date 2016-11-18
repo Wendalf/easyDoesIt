@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   require 'csv'
 
   def new
-    # binding.pry
+
     @user = User.find_by(id: params[:user_id])
     @patient = Patient.new
     render "new"
@@ -17,6 +17,7 @@ class PatientsController < ApplicationController
     else
       @patient = current_user.patients.create(patient_params)
       @patient.user = current_user
+      @patient.save
     end
   redirect_to user_patients_path(current_user)
 end
@@ -54,8 +55,29 @@ end
   end
 end
 
+
+
+  def edit
+    @patient = Patient.find_by(id: params[:id])
+  end
+
+
+  def update
+    @patient = Patient.find_by(id: params[:id])
+    @patient.update(patient_params)
+    redirect_to user_patient_path(@patient)
+  end
+
+
+
+
+
+
+
+
+
 def download_csv
-  # binding.pry
+
   patients = params[:patients].split(',')
   @patients = current_user.patients.where(:name => patients)
   CSV.open("patients.csv", 'w') do |csv|
