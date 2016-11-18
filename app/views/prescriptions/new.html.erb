@@ -2,8 +2,10 @@
 
 <br>
 <button id="drug" onClick="buildFormField()">Add Drug</button>
+
 <h3>New Prescription For <%=@patient.name%></h3>
 <%= form_for(@prescription) do |f| %>
+<input id="patient_id" name="patient_id" type="hidden" value="<%=@patient.id%>"/>
 <div id="drugform">
   <%= f.fields_for :drugs do |drug|%>
     Specify Drug Name: <input type="text" name="prescription[drugs][name][]" id="prescription_drugs_name">

@@ -1,6 +1,7 @@
+<%binding.pry%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-
+<%=@prescription.patient.name %>
 <%= @prescription.experition_date %>
 <br>
 <% @prescription.drugs.each do |drug| %>
@@ -14,7 +15,7 @@
        <div class="w3-center">
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
         <br></br>
-    
+
         <p>Select a Time <input type="time" name="usr_time" id="time1">
             <p>Select a Time <input type="time" name="usr_time" id="time2">
               <p>Select a Time <input type="time" name="usr_time" id="time3">
