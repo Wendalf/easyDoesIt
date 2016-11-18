@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+
+<%= link_to "Add Drugs", new_drug_path, :id => "drug"%>
+<h3>New Prescription For <%=@patient.name%></h3>
+<%= form_for(@prescription) do |f| %>
+<div id="drugform">
+  <%= f.fields_for :drugs do |drug|%>
+    Specify Drug Name: <input type="text" name="prescription[drugs][name][]" id="prescription_drugs_name">
+<%end%>
+
+</div>
+Prescription Experation Date: <input type="date" name="bday">
+<br>
+<%= f.submit "Create Prescription" %>
+<%end%>

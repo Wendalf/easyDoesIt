@@ -11,10 +11,16 @@ Rails.application.routes.draw do
   resources :users
   resources :prescriptions
   resources :drugs
+  resources :alerts
   resources :patients
   root to: 'application#home'
 
-  get '/patients/:id/precriptions/new' => "prescriptions#new", as: "new_patient_prescriptions"
+  # get '/patients/:id/precriptions/new' => "prescriptions#new", as: "new_patient_prescriptions"
+  resources :patients, only: [:show] do
+    resources :prescriptions
+  end
+
+
   resources :users, only: [:show] do
     resources :patients
   end

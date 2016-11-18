@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  buildFormField();
 
 })
 
@@ -27,3 +28,20 @@ function patient(){
 
   })
 }
+
+function buildFormField(){
+  $("#drug").click(function(event){
+    event.preventDefault();
+    var target = '<p>Specify Drug Name: <input type="text" name="prescription[drugs][name][]" id="prescription_drugs_name"></p>'
+    $("#drugform").append(target)
+
+  })
+
+}
+
+
+// function setTimeButton(){
+//   $("#drugform").on('click', '.set_time', function(event){
+//     document.getElementById('id01').style.display='block';
+//   })
+// }
