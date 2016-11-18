@@ -1,24 +1,31 @@
-<h2> Welcome <%= @user.email%>. The Following Is List of Your Patients </h2>
+<head>
+  <LINK href="app/assets/stylesheets/patients.scss" rel="stylesheet" type="text/css">
+</head>
+
 <input type="hidden" id="user_id" value ="<%=@user.id%>">
 
-<%= form_tag(user_patients_path(@user), :method => "get", id: "search-form") do %>
-<select id="criteria">
-  <option value="all">All</option>
-  <option value="name">Name</option>
-  <option value="height">Height</option>
-  <option value="weight">Weight</option>
-  <option value="phone_number">Phone Number</option>
-  <option value="address">Address</option>
-  <option value="age">Age</option>
-  <option value="sex">Sex</option>
-  <option value="email">Email</option>
-  <option value="dob">Date of Birth</option>
-  <option value="medical_history">Medical History</option>
-</select>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
-<button type="button" name="button" onclick="patient()">Search</button> <br>
+<%= form_tag(user_patients_path(@user), :method => "get", :name => "search", id: "search-form") do %>
 
 <% end %>
+<div id="myDIV" class="header">
+<h2> Patients List </h2>
+  <select class="sel" id="criteria">
+    <option value="all">All</option>
+    <option value="name">Name</option>
+    <option value="height">Height</option>
+    <option value="weight">Weight</option>
+    <option value="phone_number">Phone Number</option>
+    <option value="address">Address</option>
+    <option value="age">Age</option>
+    <option value="sex">Sex</option>
+    <option value="email">Email</option>
+    <option value="dob">Date of Birth</option>
+    <option value="medical_history">Medical History</option>
+  </select>
+ <input type="text" id="search_patient" placeholder="Search Patients...">
+  <!-- <span onclick="patient()" class="addBtn">Search</span> -->
+  <button onclick="patient()" class="addBtn" type="button" name="button">Search</button>
+</div>
 
 <br><br>
 
@@ -33,4 +40,9 @@
 </ul>
 </div>
 <br>
-<button type="button" name="button" onclick="download_patients()">Download</button>
+<button class="dlBtn" type="button" name="button" onclick="download_patients()">Download</button>
+
+
+<!--
+<%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
+<button type="button" name="button" onclick="patient()">Search</button> <br> -->
