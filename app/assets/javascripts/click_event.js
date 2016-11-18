@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  buildFormField();
+  // buildFormField();
 
 })
 
@@ -59,11 +59,11 @@ function download_patients(){
 }
 
 function buildFormField(){
-  $("#drug").click(function(event){
-    event.preventDefault();
+  // $("#drug").click(function(event){
+  //   event.preventDefault();
     var target = '<p>Specify Drug Name: <input type="text" name="prescription[drugs][name][]" id="prescription_drugs_name"></p>'
     $("#drugform").append(target)
 
-  })
+  // })
 
 }

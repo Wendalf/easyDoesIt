@@ -12,3 +12,20 @@ body {
   padding: 20px;
   margin: 0 auto;
 }
+
+
+
+.customize_button {
+  border: none;
+  display: inline-block;
+  outline: 0;
+  padding: 1px 5px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none!important;
+  color: #fff;
+  background-color: #607d8b;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}

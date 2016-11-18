@@ -1,7 +1,31 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
 <%= @prescription.experition_date %>
+<br>
 <% @prescription.drugs.each do |drug| %>
 <%= drug.name %>
 
+<div class="w3-container">
+  <button onclick="document.getElementById('id01').style.display='block'" class="customize_button">Set Time</button>
 
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+       <div class="w3-center">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
+        <br></br>
+    
+        <p>Select a Time <input type="time" name="usr_time" id="time1">
+            <p>Select a Time <input type="time" name="usr_time" id="time2">
+              <p>Select a Time <input type="time" name="usr_time" id="time3">
+                <br></br>
+                  <input type="submit"></p>
+                  <br></br>
+        </div>
+    </div>
+  </div>
+</div>
 
 <%end%>
+
+<br></br>

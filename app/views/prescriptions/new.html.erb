@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
 <br>
-<%= link_to "Add Drugs", new_drug_path, :id => "drug"%>
+<button id="drug" onClick="buildFormField()">Add Drug</button>
 <h3>New Prescription For <%=@patient.name%></h3>
 <%= form_for(@prescription) do |f| %>
 <div id="drugform">
