@@ -6,8 +6,9 @@ class AlertScheduler
 
     alerts.each do |alert|
       alert_time = alert.time.strftime("%H%M").to_i
-      time_now = Time.now.strftime("%H%M").to_i     
-      if alert_time == time_now
+      time_now = Time.now.strftime("%H%M").to_i
+      edate = alert.prescription.experition_date.gsub("-", "").to_i
+      if alert_time == time_now && edate > Time.now.to_datetime.strftime("%Y%m%d").to_i
         self.send_alert(alert)
       end
     end
