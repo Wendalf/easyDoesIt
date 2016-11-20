@@ -1,0 +1,63 @@
+<!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+<br>
+<button id="drug" onClick="buildFormField()">Add Drug</button>
+
+<h3>New Prescription For <%=@patient.name%></h3>
+<%= form_for(@prescription) do |f| %>
+<input id="patient_id" name="patient_id" type="hidden" value="<%=@patient.id%>"/>
+<div id="drugform">
+  <%= f.fields_for :drugs do |drug|%>
+    Specify Drug Name: <input type="text" name="prescription[drugs][name][]" id="prescription_drugs_name">
+<%end%>
+
+</div>
+Prescription Experation Date: <input type="date" name="bday">
+<br>
+<%= f.submit "Create Prescription" %>
+<%end%> -->
+
+<!--
+<div id ="pharmacies" class="w3-third  w3-striped w3-bordered w3-border">
+  <h1 class="w3-teal">Choose a Pharmacy</h1>
+  <p>Pharmacies nearest to patient:</p>
+  <br>
+  <div id="pharmecy" class="w3-striped w3-bordered w3-border">
+    <iframe
+     width="454"
+     height="250"
+     frameborder="1" style="border:1"
+     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk
+       &q=10001" allowfullscreen>
+    </iframe>
+    <p>Name: Duane Read <button type="button" name="button">Choose</button></p>
+    <p>Address: 123 ave</p>
+  </div>
+  <br>
+  <br>
+  <div id="pharmecy" class="w3-striped w3-bordered w3-border">
+    <iframe
+     width="454"
+     height="250"
+     frameborder="1" style="border:1"
+     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk
+       &q=10001" allowfullscreen>
+    </iframe>
+    <p>Name: Duane Read <button type="button" name="button">Choose</button></p>
+    <p>Address: 123 ave</p>
+  </div>
+  <br>
+  <br>
+  <div id="pharmecy" class="w3-striped w3-bordered w3-border">
+    <iframe
+     width="454"
+     height="250"
+     frameborder="1" style="border:1"
+     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk
+       &q=10001" allowfullscreen>
+    </iframe>
+    <p>Name: Duane Read <button type="button" name="button">Choose</button></p>
+    <p>Address: 123 ave</p>
+  </div>
+  <br>
+ </div> -->

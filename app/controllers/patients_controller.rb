@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   require 'csv'
 
   def new
@@ -53,6 +54,7 @@ end
   else
     redirect_to welcome_path
   end
+  
 end
 
 

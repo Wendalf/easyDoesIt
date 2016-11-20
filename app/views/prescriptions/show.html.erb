@@ -1,11 +1,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<div id ="content">
+
 <%=@prescription.patient.name %>
-<%= @prescription.experition_date %>
+<h2><%= @prescription.experition_date %> </h2>
 <br>
 <% @prescription.drugs.each do |drug| %>
-<%= drug.name %>
+<h3> <%= drug.name %> </h3>
 
 <div class="w3-container">
   <button onclick="document.getElementById('id01').style.display='block'" class="customize_button">Set Time</button>
@@ -27,6 +29,10 @@
   </div>
 </div>
 
+</div>
 <%end%>
+<br>
+<div id="editor"></div>
+<button id="cmd" onclick="download_pdf()">generate PDF</button>
 
 <br></br>

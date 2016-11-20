@@ -1,3 +1,4 @@
+require "pdfkit"
 class PrescriptionsController < ApplicationController
 
   def new
@@ -10,13 +11,22 @@ class PrescriptionsController < ApplicationController
 
 
   def create
+
       @prescription = Prescription.create(experition_date: params["bday"])
-      patient= Patient.find_by(id: params["patient_id"])
+      patient= Patient.find_by(id: params["pharmacy"]["patient"])
       @prescription.patient_id = patient.id
       @prescription.save
+
       drugs = params["prescription"]["drugs"]["name"]
       drugs.each do |drug|
         @prescription.drugs.find_or_create_by(name: drug)
+      end
+
+      refills = params["prescription"]["drugs"]["refill"]
+      refills.each do |refill|
+        @prescription.drugs.each do |presription_drug|
+          presription_drug.drug_prescriptions.create(refill:refill)
+        end
       end
       redirect_to prescription_path(@prescription)
   end
@@ -26,7 +36,14 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.find_by(id: params[:id])
   end
 
+  def google_pharmacies
 
+    @client = GooglePlaces::Client.new("AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk")
+    @result = @client.spots(params["lat"],params["lng"], :types => 'pharmacy', :keyword => "walgreens", :radius => 500)
+    respond_to do |f|
+      f.json{render :json => @result.to_json}
+    end
+  end
 
 
   private
@@ -38,12 +55,5 @@ class PrescriptionsController < ApplicationController
   def drug_params
     params.require(:prescription).permit(:drugs)
   end
-
-
-
-
-
-
-
 
 end
