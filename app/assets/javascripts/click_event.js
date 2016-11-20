@@ -1,5 +1,5 @@
 jQuery(function($) {
-  geo_coder($("#hidden_address").val());
+  // geo_coder($("#hidden_address").val());
 })
 
 //note: ajax loaded html will not work with regular click events you have to use

@@ -30,7 +30,7 @@ function find_pharmacy(lat, lng){
 // add pharm list to prescription new page
 function add_pharmacies(array){
   var pharmacies = array;
-  
+
   for(var i=0; i < 3; i++){
     $('div#pharmacies').append(
       `<br>
@@ -42,7 +42,7 @@ function add_pharmacies(array){
          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk
            &q=${pharmacies[i]["vicinity"]}" allowfullscreen>
         </iframe>
-        <p>Name: ${pharmacies[i]["name"]}-  </p>
+        <p>Name: ${pharmacies[i]["name"]}  </p>
         <p>Address: ${pharmacies[i]["vicinity"]}</p>
         <button id="thisPharm"  type="button" class="w3-btn-block w3-teal" name="button">Choose</button>
       </div>
