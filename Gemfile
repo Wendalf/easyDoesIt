@@ -48,7 +48,7 @@ gem 'faraday'
 gem 'devise'
 
 gem 'rb-readline'
-gem 'pry-coolline'
+
 gem 'figaro'
 
 # Use Redis adapter to run Action Cable in production
@@ -65,7 +65,7 @@ group :development, :test do
   # gem 'byebug', platform: :mri
 
   # Use pry do debug.
-  gem 'pry'
+  # gem 'pry'
 end
 
 group :development do

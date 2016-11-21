@@ -30,7 +30,7 @@ end
 
 
   def index
-    # binding.pry
+
     if current_user
     criteria = params[:criteria]
     input = params[:input]
