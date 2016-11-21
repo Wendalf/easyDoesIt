@@ -44,7 +44,7 @@ function add_pharmacies(array){
         </iframe>
         <p>Name: ${pharmacies[i]["name"]}  </p>
         <p>Address: ${pharmacies[i]["vicinity"]}</p>
-        <button id="thisPharm"  type="button" class="w3-btn-block w3-teal" name="button">Choose</button>
+        <button id="thisPharm"  type="button" class="w3-btn-block w3-light-blue" name="button">Choose</button>
       </div>
       <br>`
     )

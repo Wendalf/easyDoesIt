@@ -6,10 +6,10 @@ jQuery(function($) {
 // the below syntax to make it work.
 $(document).on("click","button#thisPharm",function(e){
   $("div#pharmacies").html('')
-  $("div#pharmacies").append('<h1 class="w3-teal">Choose a Pharmacy</h1>')
+  $("div#pharmacies").append('<h1 class="w3-light-blue">Choose a Pharmacy</h1>')
   $("div#pharmacies").append('<p>Selected Pharmacy:</p>')
   $("div#pharmacies").append($(this).parents().get(0));
-  $("button#thisPharm").replaceWith('<button id="difPharm"  class="w3-btn-block w3-teal" type="button" name="button">Select a Different Pharmacy</button>');
+  $("button#thisPharm").replaceWith('<button id="difPharm"  class="w3-btn-block w3-light-blue" type="button" name="button">Select a Different Pharmacy</button>');
   setHiddenPharmVals()
 });
 
@@ -23,7 +23,7 @@ function setHiddenPharmVals(){
 $(document).on("click","button#difPharm",function(e){
   clearHiddenPharmVals()
   $("div#pharmacies").html('')
-  $("div#pharmacies").append('<h1 class="w3-teal">Choose a Pharmacy</h1>')
+  $("div#pharmacies").append('<h1 class="w3-light-blue">Choose a Pharmacy</h1>')
   $("div#pharmacies").append('<p>Pharmacies nearest to patient:</p>')
   geo_coder($("#hidden_address").val());
 });
