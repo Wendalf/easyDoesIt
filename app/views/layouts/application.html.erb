@@ -16,11 +16,10 @@
 
   <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
     <!-- web font -->
-<<<<<<< HEAD
     <link href='//fonts.googleapis.com/css?family=Athiti:400,200,300,500,600,700' rel='stylesheet' type='text/css'>
-=======
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
->>>>>>> 763434e283208bbb3925ec49514cf38e350df91d
+
     <!-- //web font -->
   </head>
 
@@ -29,16 +28,17 @@
   <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
   <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
   <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
-<<<<<<< HEAD
-  <% if !current_user  %>
+
+  <!-- <% if !current_user  %>
   <%= link_to "Log In", new_user_session_path %>
   <%= link_to "Sign Up", new_user_registration_path %>
-=======
+  <%end%> -->
+<!-- 
   <% if current_user  %>
     <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
->>>>>>> 763434e283208bbb3925ec49514cf38e350df91d
-  <%end%>
+  <%end%> -->
+
+
     <%= yield %>
   </div>
   </body>
-</html>
