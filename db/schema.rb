@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20161121195839) do
     t.integer  "patient_id"
     t.integer  "drug_id"
     t.datetime "time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "prescription_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "drug_prescriptions", force: :cascade do |t|

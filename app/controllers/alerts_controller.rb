@@ -1,5 +1,6 @@
 class AlertsController < ApplicationController
-  
+
+
   def create
     @patient = Patient.find(params[:patient_id])
     @drug = Drug.find(params[:drug_id])
@@ -15,4 +16,38 @@ class AlertsController < ApplicationController
       f.json{render :json => @created_alerts.to_json}
     end
   end
+# =======
+#
+#
+#
+#   def new
+#   end
+#
+#
+#   def create
+#
+#     t = params["time"]
+#     t.each do |time|
+#       if time != ""
+#        result = time.to_datetime
+#        @alert = Alert.create(time: result, patient_id: params["patient_id"], drug_id: params["drug_id"], prescription_id: params["prescription_id"])
+#       end
+#     end
+#     redirect_to user_patient_path(@alert.patient.user, @alert.patient)
+#   end
+#
+#
+#
+#   private
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+# >>>>>>> master
 end

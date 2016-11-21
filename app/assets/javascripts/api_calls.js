@@ -23,7 +23,6 @@ function find_pharmacy(lat, lng){
     }
   }).done(function(data){
        add_pharmacies(data);
-      //  console.log(data.results);
   });
 }
 
@@ -42,8 +41,8 @@ function add_pharmacies(array){
          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk
            &q=${pharmacies[i]["vicinity"]}" allowfullscreen>
         </iframe>
-        <p>Name: ${pharmacies[i]["name"]}  </p>
-        <p>Address: ${pharmacies[i]["vicinity"]}</p>
+        <p>${pharmacies[i]["name"]}  </p>
+        <p>${pharmacies[i]["vicinity"]}</p>
         <button id="thisPharm"  type="button" class="w3-btn-block w3-light-blue" name="button">Choose</button>
       </div>
       <br>`
@@ -51,21 +50,3 @@ function add_pharmacies(array){
   }
 
 }
-
-
-// function find_pharmacy(lat, lng){
-//   $.ajax({
-//     type: "GET",
-//     dataType: 'json',
-//     jsonp: false,
-//     jsonpCallback: "myJsonMethod",
-//     headers:{
-//       "Access-Control-Allow-Origin":"*"
-//     },
-//     cache: false,
-//     url:`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=500&type=pharmacy&keyword=walgreens%20pharmacy&key=AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk`
-//   }).done(function(data){
-//        add_pharmacies(data.results);
-//       //  console.log(data.results);
-//   });
-// }
