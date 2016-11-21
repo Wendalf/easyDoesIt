@@ -1,39 +1,93 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<div id ="content">
 
-<%=@prescription.patient.name %>
-<h2><%= @prescription.experition_date %> </h2>
-<br>
-<% @prescription.drugs.each do |drug| %>
-<h3> <%= drug.name %> </h3>
-<h3> <%= drug.drug_prescriptions.first.refill  %> </h3>
-
-<div class="w3-container">
-  <button onclick="document.getElementById('id01').style.display='block'" class="customize_button">Set Time</button>
-
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-       <div class="w3-center">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
-        <br></br>
-
-        <p>Select a Time <input type="time" name="usr_time" id="time1">
-            <p>Select a Time <input type="time" name="usr_time" id="time2">
-              <p>Select a Time <input type="time" name="usr_time" id="time3">
-                <br></br>
-                  <input type="submit"></p>
-                  <br></br>
-        </div>
+<div id="container" class="w3-container w3-center" style="height: 100px">
+  <div class="w3-container w3-light-blue  w3-margin-bottom">
+    <div class="w3-left">
+      <col>
+        <h3>Dr. <%=current_user.name%></h3>
+        <h6>Address: <%=current_user.address%> </h6>
+        <h6>Tel: <%=current_user.phone_number%></h6>
+      </col>
     </div>
+    <div class="w3-right">
+        <col>
+          <h3><%=  @prescription.pharmacy_name%></h3>
+          <h6><%=  @prescription.pharmacy_address%> </h6>
+        </col>
+    </div>
+
+  </div>
+  <br>
+
+  <div class=" w3-twothird">
+    <table id="userInfo" class="w3-table w3-striped w3-bordered w3-border">
+    <thead class="w3-light-blue "><th style="width:30%"><h2>Patient Info</h2></th><th></th></thead>
+    <tr><td style="width:30%">Name:</td><td><%=@prescription.patient.name%></td></tr>
+    <tr><td>Phone:</td><td><%=@prescription.patient.phone_number%></td></tr>
+    <tr><td>Email:</td><td><%=@prescription.patient.email%></td></tr>
+    <tr><td>Address:</td><td><%=@prescription.patient.address%></td></tr>
+    <input id ="patient_id" type="hidden" name="patient_id" value="<%=@prescription.patient.id%>">
+    </table>
+    <br>
+
+    <table id= "drugform" class="w3-table w3-striped w3-bordered w3-border">
+    <thead class="w3-light-blue"><th style="width:40%"><h2>Medication</h2></th><th></th><th></th></thead>
+    <thead><th>Drug Name</th><th>Refills</th><th>Notify Patient</th></thead>
+    <% @prescription.drugs.each do |drug| %>
+    <input id="drug_id" type="hidden" name="drug_id" value="<%=drug.id%>">
+      <tr><td><%=drug.name%></td><td><%=drug.drug_prescriptions.first.refill%></td><td><button onclick="document.getElementById('id01').style.display='block'" class="customize_button"> Set Alert</button></td></tr>
+      <% end%>
+    </table>
+    <br>
+
+  <br>
+
+  </div>
+
+  <div class="w3-third"style="padding-left: 40px">
+    <table id= "drugform" class="w3-table w3-striped w3-bordered w3-border">
+    <thead class="w3-light-blue"><th ><h2>Diagnosis</h2></th><th></th></thead>
+      <tr><td><%=@prescription.diagnosis%></td></td></tr>
+    </table>
+    <br>
+    <br>
+    <table class="w3-table w3-striped w3-bordered w3-border">
+    <thead class="w3-light-blue"><th style="width:30%"><h2>Notes</h2></th></thead>
+    <tr><td><%=@prescription.notes%></tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <div class="w3-third">
+      <a href="#" onclick="print_page()"><img src="https://freeiconshop.com/files/edd/print-solid.png" height="42" width="42" /> Print</img></a>
+    </div>
+    <div class="w3-twothird">
+      <a href="#" onclick="sent_pharm()"><img src="http://simpleicon.com/wp-content/uploads/rx.png" height="44" width="44" /> Send to Pharmacy</img>
+    </div></a>
+    <div id="signature">
+      <img src="https://i.stack.imgur.com/ukRqG.png" />
+    </div>
+    </div>
+
+
+<!--  pop up modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+     <div class="w3-center">
+      <span id ="closeClick" onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
+      <br></br>
+        <h2>Alert Your Patient When to take their medication</h2>
+      <p>Select a Time <input type="time" name="usr_time" id="time1">
+          <p>Select a Time <input type="time" name="usr_time" id="time2">
+            <p>Select a Time <input type="time" name="usr_time" id="time3">
+              <br></br>
+                <button type="button" onclick="setAlert()" name="button">Create</button>
+                <br></br>
+      </div>
   </div>
 </div>
+<!--  -->
 
 </div>
-<%end%>
-<br>
-<div id="editor"></div>
-<button id="cmd" onclick="download_pdf()">generate PDF</button>
-
-<br></br>

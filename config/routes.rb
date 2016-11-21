@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
-
+  post '/alerts/create' => "alerts#create"
+  
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :prescriptions
   resources :drugs

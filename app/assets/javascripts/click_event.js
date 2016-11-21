@@ -106,3 +106,44 @@ function download_pdf(){
         doc.save('sample-file.pdf');
 
 }
+function print_page() {
+  event.preventDefault();
+  // var html = '<img src="https://i.stack.imgur.com/ukRqG.png" />'
+  // $("#signature").append('<img src="https://i.stack.imgur.com/ukRqG.png" />')
+    window.print();
+}
+
+function sent_pharm(){
+  alert("Prescription has been sent to pharmacy!")
+}
+
+
+function setAlert(){
+  event.preventDefault();
+  var drugId =$("input#drug_id").val();
+  var patientId = $("input#patient_id").val();
+  var timeOne = $("input#time1").val()
+  var timeTwo = $("input#time2").val()
+  var timeThree = $("input#time3").val()
+      $.ajax({
+        type: 'post',
+        url: '/alerts/create',
+        dataType: 'json',
+        data: {
+          "alert1": timeOne,
+          "alert2": timeTwo,
+          "alert3": timeThree,
+          "patient_id":patientId,
+          "drug_id":drugId
+        }
+      }).done(function(data){
+
+        if (data){
+          $('span#closeClick').click();
+          alert("Successfully set alert times.")
+        }else{
+          $('span#closeClick').click();
+          alert("Error")
+        }
+      });
+}

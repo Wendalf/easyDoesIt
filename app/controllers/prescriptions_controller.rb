@@ -11,8 +11,7 @@ class PrescriptionsController < ApplicationController
 
 
   def create
-    #  binding.pry
-      @prescription = Prescription.create(experition_date: params["experiation"], pharmacy_name: params[:pharmacy][:name], pharmacy_address:params[:pharmacy][:address] )
+      @prescription = Prescription.create(experition_date: params["experiation"], pharmacy_name: params[:pharmacy][:name], pharmacy_address:params[:pharmacy][:address], notes:params[:note], diagnosis:params[:diagnosis])
       patient= Patient.find_by(id: params["pharmacy"]["patient"])
       @prescription.patient_id = patient.id
       @prescription.save
