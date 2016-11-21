@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   require 'csv'
 
   def new
@@ -29,11 +30,12 @@ end
 
 
   def index
+    # binding.pry
     if current_user
     criteria = params[:criteria]
     input = params[:input]
 
-      if input
+      if criteria
         if criteria == "all"
           @patients = current_user.patients.all
         elsif criteria == "medical_history"
@@ -53,6 +55,7 @@ end
   else
     redirect_to welcome_path
   end
+
 end
 
 
