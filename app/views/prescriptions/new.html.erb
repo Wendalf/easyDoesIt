@@ -9,14 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
-<div class="w3-container w3-teal w3-margin-bottom">
+<div class="w3-container w3-light-blue  w3-margin-bottom">
 
 <h1>New Prescription For <%=@patient.name%></h1>
 <input id="patient_id" type="hidden" name="patient[id]" value="<%=@patient.id%>">
 <input id="hidden_address" type="hidden" value="<%=@patient.address%>">
 
 
-<h4>Prescription Experation Date: <input type="date" name="bday"></h4>
+<h4>Prescription Experation Date: <input type="date" name="experiation"></h4>
 </div>
 <%= form_for(@prescription) do |f| %>
 
@@ -27,7 +27,7 @@
 
 <div class="w3-twothird">
   <table id="userInfo" class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-teal"><th style="width:30%"><h2>Patient Information</h2></th><th></th></thead>
+  <thead class="w3-light-blue "><th style="width:30%"><h2>Patient Information</h2></th><th></th></thead>
   <tr><td style="width:30%">Name:</td><td><%=@patient.name%></td></tr>
   <tr><td>Phone:</td><td><%=@patient.phone_number%></td></tr>
   <tr><td>Email:</td><td><%=@patient.email%></td></tr>
@@ -35,13 +35,13 @@
   </table>
   <br>
   <table class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-teal"><th style="width:30%"><h2>Diagnosis(s)</h2></th><th></th></thead>
+  <thead class="w3-light-blue"><th style="width:30%"><h2>Diagnosis(s)</h2></th><th></th></thead>
     <tr><td><textarea  name="diagnosis" rows="4" cols="80"></textarea> </td></tr>
   </table>
 <br>
 
   <table id= "drugform" class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-teal"><th style="width:30%"><h2>Medication</h2></th><th></th></thead>
+  <thead class="w3-light-blue"><th style="width:30%"><h2>Medication</h2></th><th></th></thead>
   <thead><th><button id="drug" onClick="buildFormField()">Add Drug</button></th></thead>
   <thead><th>Drug Name</th><th>Refills</th></thead>
     <tr><td><input type="text" name="prescription[drugs][name][]" size="20" id="prescription_drugs_name"></td><td><input type="text" name="prescription[drugs][refill][]" id="prescription_drugs_name"></td></tr>
@@ -49,19 +49,19 @@
   <br>
 
   <table class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-teal"><th style="width:30%"><h2>Addional Notes</h2></th><th></th></thead>
+  <thead class="w3-light-blue"><th style="width:30%"><h2>Addional Notes</h2></th><th></th></thead>
     <tr><td><textarea   name="note" rows="4" cols="80"></textarea> </td></tr>
   </table>
 <br>
 </div>
 
 <div id ="pharmacies" class="w3-third  w3-striped w3-bordered w3-border">
-  <h1 class="w3-teal">Choose a Pharmacy</h1>
+  <h1 class="w3-light-blue">Choose a Pharmacy</h1>
   <p>Pharmacies nearest to patient:</p>
 
 
  </div>
-<%= f.submit "Create Prescription",class:"w3-btn-block w3-teal" %>
+<%= f.submit "Create Prescription",class:"w3-btn-block w3-light-blue" %>
 </div>
 
 <% end %>

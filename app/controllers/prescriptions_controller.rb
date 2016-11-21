@@ -11,8 +11,8 @@ class PrescriptionsController < ApplicationController
 
 
   def create
-
-      @prescription = Prescription.create(experition_date: params["bday"])
+    #  binding.pry
+      @prescription = Prescription.create(experition_date: params["experiation"], pharmacy_name: params[:pharmacy][:name], pharmacy_address:params[:pharmacy][:address] )
       patient= Patient.find_by(id: params["pharmacy"]["patient"])
       @prescription.patient_id = patient.id
       @prescription.save
@@ -23,11 +23,12 @@ class PrescriptionsController < ApplicationController
       end
 
       refills = params["prescription"]["drugs"]["refill"]
-      refills.each do |refill|
-        @prescription.drugs.each do |presription_drug|
-          presription_drug.drug_prescriptions.create(refill:refill)
-        end
+
+      @prescription.drug_prescriptions.zip(refills).each do |presription_drug, refill|
+        presription_drug.refill = refill
+        presription_drug.save
       end
+
       redirect_to prescription_path(@prescription)
   end
 
@@ -37,7 +38,6 @@ class PrescriptionsController < ApplicationController
   end
 
   def google_pharmacies
-
     @client = GooglePlaces::Client.new("AIzaSyCrFym4iM3Lnh6TGX4QNB_jZcpCIDE33Fk")
     @result = @client.spots(params["lat"],params["lng"], :types => 'pharmacy', :keyword => "walgreens", :radius => 500)
     respond_to do |f|

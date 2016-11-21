@@ -8,6 +8,7 @@
 <br>
 <% @prescription.drugs.each do |drug| %>
 <h3> <%= drug.name %> </h3>
+<h3> <%= drug.drug_prescriptions.first.refill  %> </h3>
 
 <div class="w3-container">
   <button onclick="document.getElementById('id01').style.display='block'" class="customize_button">Set Time</button>
