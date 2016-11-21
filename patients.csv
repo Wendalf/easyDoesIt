@@ -1,7 +1,1 @@
 id,user_id,name,medical_history,height,weight,health_history,phone_number,address,age,sex,email,note,created_at,updated_at,dob
-<<<<<<< HEAD
-1,1,Anne Radcliffe,"Astha inhailer, Advil",5'6,140lb,"Asthma, constant headaches",000-000-0000,"870 43rd street, Brooklyn New York, 11232",34,F,anne@anne.com,,2016-11-20 18:14:29 UTC,2016-11-20 18:14:29 UTC,5/23/83
-2,1,David Wu,"clartin, rubetusin",5'11,160lb,"Asthma, alergic to mushrooms",111-111-1111,"872 43rd street, Brooklyn New York, 11232",18,M,david@david.com,,2016-11-20 18:14:29 UTC,2016-11-20 18:14:29 UTC,10/3/96
-=======
-1,11,Isuru Vidanpathirana,advil,5'11,190,cold,3473274492,182 35 WEXFORD TERRACE,,male,isuru260@gmail.com,"",2016-11-20 04:17:11 UTC,2016-11-20 04:34:42 UTC,12/12/12
->>>>>>> 9f76a89223842e909c1fd372400e55f7ed3eb452

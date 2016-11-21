@@ -1,31 +1,40 @@
-
+<link rel="stylesheet" href="css/core.css">
 
 <%= render "/layouts/nav" %>
 <br></br>
+
+
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav" id="colored">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+
+      <p><a href="/users/<%=current_user.id%>/patients/new" class="btn btn-primary btn-lg">Add Patient</a></p>
+      <br></br>
+      <p><a href="/users/edit" class="btn btn-primary btn-lg">Edit Profile</a></p>
+      <br>
+      <p><%= form_tag patients_path, multipart: true do%>
+        <%= file_field_tag :leads%>
+        <br>
+        <%= submit_tag "Upload CSV", class: "btn btn-primary btn-lg" %>
+        <%end%></p>
     </div>
     <div class="col-sm-8 text-left">
       <h3>List of Your Patients</h3>
       <br></br>
       <div id="patient_list">
           <ul><% @user.patients.each do |patient|%>
-          <a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>" class="buttons"><%=patient.name%></a>
-          <br></br>
+          <h5><a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>" class="buttons"><%=patient.name%></a></h5>
+          <br>
           <%end%></ul>
       </div>
     </div>
     <div class="col-sm-2 sidenav">
-
-
-          <%= form_tag patients_path, multipart: true do %>
-          <%= file_field_tag :leads %>
-          <%= submit_tag "Upload CSV File" %>
-          <%end%>
-
+      <!-- <div class="well">
+        <!<button class="action-button shadow animate grey" type="button" name="button" onclick="download_patients()">Download CSV</button> -->
+      <!-- </div>
+      <div class="well">
+        <p>ADS</p>
+      </div> -->
     </div>
   </div>
 </div>

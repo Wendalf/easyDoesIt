@@ -53,7 +53,7 @@ function patient(){
     if(data.length !== 0){
         $("#patient_list ul").html('')
     for(var i=0; i<data.length; i++){
-      $("#patient_list ul").append(`<li><a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a></li>`);
+      $("#patient_list ul").append(`<a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a>`);
     }
   }else{
       $("#patient_list ul").html('')

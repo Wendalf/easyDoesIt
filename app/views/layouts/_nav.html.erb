@@ -31,13 +31,12 @@
        </li>
 
 
-
-         <form class="navbar-form navbar-left" role="search" id="search_form" name="search" action="/users/<%=current_user.id%>/patients">
-           <div class="form-group">
-             <input type="text" class="form-control" placeholder="Search">
-           </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Patient" name="search" id="search_patient">
+        </div>
+        <button type="submit" class="btn btn-default" onclick="patient()">Submit</button>
+      </form>
 
 
       <li><a href="#"></a></li>
