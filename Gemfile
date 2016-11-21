@@ -14,6 +14,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+gem "pdfkit"
+gem "wkhtmltopdf-binary"
+gem 'prawn'
+gem 'jspdf-rails', '~> 1.0', '>= 1.0.3'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -27,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Twilio ruby gem to send text alerts
 gem 'twilio-ruby'
+gem 'google_places'
 
 # Use delayed job for running background jobs
 gem 'delayed_job_active_record'
@@ -43,7 +48,7 @@ gem 'faraday'
 gem 'devise'
 
 gem 'rb-readline'
-gem 'pry-coolline' 
+gem 'pry-coolline'
 gem 'figaro'
 
 # Use Redis adapter to run Action Cable in production
