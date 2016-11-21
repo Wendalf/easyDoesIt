@@ -11,6 +11,7 @@ class PatientsController < ApplicationController
 
   def create
     if params[:leads]
+      binding.pry
       CSV.foreach(params[:leads].path, headers: true) do |lead|
         @patient = current_user.patients.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
       end

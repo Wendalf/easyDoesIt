@@ -1,0 +1,36 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<%=@prescription.patient.name %>
+<%= @prescription.experition_date %>
+<br>
+<% @prescription.drugs.each do |drug| %>
+<%= drug.name %>
+
+<div class="w3-container">
+  <button onclick="document.getElementById('id01').style.display='block'" class="customize_button">Set Time</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+       <div class="w3-center">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
+        <br></br>
+        <h4>Please Select Time for each Dosage</h4>
+        <%=form_for(Alert.new) do |f| %>
+        <input type="hidden" name="patient_id" value="<%=@prescription.patient.id%>">
+        <input type="hidden" name="prescription_id" value="<%=@prescription.id%>">
+        <input type="hidden" name="drug_id" value="<%=drug.id%>">
+        <p>Select a Time <input type="time" name="time[]" id="time1">
+            <p>Select a Time <input type="time" name="time[]" id="time2">
+              <p>Select a Time <input type="time" name="time[]" id="time3">
+                <br></br>
+                  <%=f.submit "Add Time"%></p>
+                  <%end%>
+                  <br></br>
+        </div>
+    </div>
+  </div>
+</div>
+
+<%end%>
+
+<br></br>

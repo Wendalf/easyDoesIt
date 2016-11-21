@@ -17,3 +17,4 @@
 //= require api_calls
 //= require click_event
 //= require signin
+//= require index
