@@ -1,5 +1,5 @@
 <h2> Welcome <%= @user.email%>. The Following Is List of Your Patients </h2>
-
+<input id="user_id" type="hidden" value="<%=current_user.id%>">
 <%= form_tag patients_path, multipart: true do %>
 <%= file_field_tag :leads %>
 <%= submit_tag "Upload CSV File" %>
@@ -33,13 +33,13 @@
 
 
 
-
-<div id="patient_list">
 <%= link_to "Add Patient", action: "new", :method => "get" %>
+<div id="patient_list">
+
 
 <ul>
   <% @user.patients.each do |patient|%>
-  <li><a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>"><%=patient.name%></a></li>
+  <a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>"><%=patient.name%></a><br>
   <%end%>
 </ul>
 </div>

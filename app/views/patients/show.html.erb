@@ -1,6 +1,6 @@
 <%= link_to "Edit Medical History", edit_user_patient_path(@patient.user, @patient) %>
 <br></br>
-
+<a data-confirm="Are you sure?" data-method="delete" href="/users/<%=current_user.id%>/patients/<%=@patient.id%>">Delete</a>
 <%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
 <br></br>
 
