@@ -1,0 +1,48 @@
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"></li>
+        <li>
+          <%= form_tag(user_patients_path(@user), :method => "get", id: "search-form") do %>
+          <select class="sel" id="criteria">
+           <option value="all">All</option>
+           <option value="name">Name</option>
+           <option value="height">Height</option>
+           <option value="weight">Weight</option>
+           <option value="phone_number">Phone Number</option>
+           <option value="address">Address</option>
+           <option value="age">Age</option>
+           <option value="sex">Sex</option>
+           <option value="email">Email</option>
+           <option value="dob">Date of Birth</option>
+           <option value="medical_history">Medical History</option>
+         </select>
+         <%end%>
+       </li>
+
+       <li><%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
+         <button type="button" name="button" onclick="patient()">Search</button></li>
+
+         
+      <li><a href="#"></a></li>
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</nav>
