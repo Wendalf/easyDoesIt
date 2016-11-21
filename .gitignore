@@ -17,9 +17,6 @@
 .byebug_history
 
 
-# Ignore secrets.yml
-config/secrets.yml
-
 # Ignore .env file
 .env
 app/.env
