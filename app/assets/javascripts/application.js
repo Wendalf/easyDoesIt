@@ -16,5 +16,8 @@
 //= require_tree .
 //= require api_calls
 //= require click_event
+
+//= require 'jspdf'
+
 //= require signin
 //= require index
