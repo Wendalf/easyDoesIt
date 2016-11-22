@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
         <li><a href="/">Patients</a></li>
-        <li></li>
+        <li><a href="/users/<%=current_user.id%>/patients/new">Add Patient</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>

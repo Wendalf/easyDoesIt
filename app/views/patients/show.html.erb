@@ -1,47 +1,63 @@
-<%= link_to "Edit Medical History", edit_user_patient_path(@patient.user, @patient) %>
-<br></br>
-<a data-confirm="Are you sure?" data-method="delete" href="/users/<%=current_user.id%>/patients/<%=@patient.id%>">Delete</a>
-<%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
+<%= render "/layouts/nav" %>
 <br></br>
 
 
-<p class="medical-history">Medical History</p>
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav" id="colored">
+      <p><%= link_to "Add Prescription", new_patient_prescription_path(@patient), class: "btn btn-primary btn-lg" %></p>
+      <p><%= link_to "Edit Medical History", edit_user_patient_path(@patient.user, @patient), class: "btn btn-primary btn-lg" %></p>
+      <p><a class="btn btn-primary btn-lg" data-confirm="Are you sure?" data-method="delete" href="/users/<%=current_user.id%>/patients/<%=@patient.id%>">Delete Patient</a></p>
+      <div id="prescription_info">
+        <b>Last Prescription(s)</b>
+        <% if @patient.prescriptions %>
+          <ul>
+            <% @patient.prescriptions.each do |prescription| %>
+              <li><%= link_to "#{prescription.experition_date}", prescription_path(prescription)%></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-8 text-left">
+      <h3>Medical History</h3>
+        <div class="patient-show">
+        Name: <%= @patient.name%>
+        <br>
+        Age: <%= @patient.age %>
+        <br>
+        Sex: <%= @patient.sex %>
+        <br>
+        Email: <%= @patient.email %>
+        <br>
+        Phone Number: <%= @patient.phone_number %>
+        <br>
+        Address: <%= @patient.address %>
+        <br>
+        Medications Taken: <%= @patient.medical_history%>
+        <br>
+        Height: <%= @patient.height %>
+        <br>
+        Weight: <%= @patient.weight %>
+        <br>
+        Health Conditions:  <%= @patient.health_history %>
+        <br>
+        Concerns: <%= @patient.note %>
 
-<div class="patient-show">
-Name: <%= @patient.name%>
-<br>
-Age: <%= @patient.age %>
-<br>
-Sex: <%= @patient.sex %>
-<br>
-Email: <%= @patient.email %>
-<br>
-Phone Number: <%= @patient.phone_number %>
-<br>
-Address: <%= @patient.address %>
-<br>
-Medications Taken: <%= @patient.medical_history%>
-<br>
-Height: <%= @patient.height %>
-<br>
-Weight: <%= @patient.weight %>
-<br>
-Health Conditions:  <%= @patient.health_history %>
-<br>
-Concerns: <%= @patient.note %>
+        <br></br>
 
-<br></br>
-
-Current Medications
-<br></br>
-<%= @patient.medical_history %>
-
-<div id="prescription_info">
-  <p>Last Prescription(s)</p>
-  <% if @patient.prescriptions %>
-  <% @patient.prescriptions.each do |prescription| %>
-    <%= link_to "#{prescription.experition_date}", prescription_path(prescription)%>
-  <% end %>
-  <% end %>
-
+        Current Medications
+        <br></br>
+        <%= @patient.medical_history %>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <!-- <div class="well">
+        <!<button class="action-button shadow animate grey" type="button" name="button" onclick="download_patients()">Download CSV</button> -->
+      <!-- </div>
+      <div class="well">
+        <p>ADS</p>
+      </div> -->
+    </div>
+  </div>
 </div>
+

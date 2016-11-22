@@ -5,10 +5,7 @@
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav" id="colored">
-    <p><a href="/users/<%=current_user.id%>/patients/new" class="btn btn-primary btn-lg">Add Patient</a></p>
-    <br></br>
-    <p><a href="/users/edit" class="btn btn-primary btn-lg">Edit Profile</a></p>
-    <br>
+    <h5>Upload Patient by CSV file</h5>
     <p>
       <%= form_tag patients_path, multipart: true do%>
       <%= file_field_tag :leads %>
@@ -16,8 +13,9 @@
       <%= submit_tag "Upload CSV", class: "btn btn-primary btn-lg" %>
     <%end%>
     </p>
+    <br />
+    <h5>Search Patient:</h5>
     <p>
-      Search Patient:
       <%= form_tag(user_patients_path(@user), :method => "get", id: "search-form") do %>
         <select class="sel" id="criteria">
           <option value="all">All</option>
@@ -33,7 +31,9 @@
           <option value="medical_history">Medical History</option>
         </select>
         <%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
-        <button type="button" name="button" class="btn btn-default" onclick="patient()">Search</button>
+        <br />
+        <br />
+        <button type="button" name="button" class="btn btn-primary btn-lg" onclick="patient()">Search</button>
       <% end %>
     </p>
     </div>
@@ -42,7 +42,7 @@
       <br></br>
       <div id="patient_list">
           <ul><% @user.patients.each do |patient|%>
-          <h5><a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>" class="buttons"><%=patient.name%></a></h5>
+          <h3><a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>" class="buttons"><%=patient.name%></a></h3>
           <br>
           <%end%></ul>
       </div>
@@ -57,9 +57,3 @@
     </div>
   </div>
 </div>
-
-
-
-<footer class="text-center">
-  <p>Contact Us</p>
-</footer>

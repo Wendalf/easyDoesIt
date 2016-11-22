@@ -1,14 +1,4 @@
-
-<style >
-#pharmecy.scroll {
-  width: 100px;
-  height: 100px;
-  overflow: scroll;
-}
-</style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-
+<%= render "/layouts/nav" %>
 <div class="w3-container w3-light-blue  w3-margin-bottom">
 <h1>New Prescription For <%=@patient.name%></h1>
 <input id="patient_id" type="hidden" name="patient[id]" value="<%=@patient.id%>">
@@ -24,7 +14,7 @@
 
 <div class="w3-twothird">
   <table id="userInfo" class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-light-blue "><th style="width:30%"><h2>Patient Info</h2></th><th></th></thead>
+  <thead class="w3-light-blue "><th style="width:30%" colspan="2"><h1>Patient Info</h1></th></thead>
   <tr><td style="width:30%">Name:</td><td><%=@patient.name%></td></tr>
   <tr><td>Phone:</td><td><%=@patient.phone_number%></td></tr>
   <tr><td>Email:</td><td><%=@patient.email%></td></tr>
@@ -32,13 +22,13 @@
   </table>
   <br>
   <table class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-light-blue"><th style="width:30%"><h2>Diagnosis(s)</h2></th><th></th></thead>
+  <thead class="w3-light-blue"><th style="width:30%" colspan="2"><h2>Diagnosis(s)</h2></th></thead>
     <tr><td><textarea  name="diagnosis" rows="4" cols="80"></textarea> </td></tr>
   </table>
 <br>
 
   <table id= "drugform" class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-light-blue"><th style="width:30%"><h2>Medication</h2></th><th></th></thead>
+    <thead class="w3-light-blue"><th style="width:30%" colspan="2"><h2>Medication</h2></th></thead>
   <thead><th><button id="drug" onClick="buildFormField()">Add Drug</button></th></thead>
   <thead><th>Drug Name</th><th>Refills</th></thead>
     <tr><td><input type="text" name="prescription[drugs][name][]" size="20" id="prescription_drugs_name"></td><td><input type="text" name="prescription[drugs][refill][]" id="prescription_drugs_name"></td></tr>
@@ -46,20 +36,20 @@
   <br>
 
   <table class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-light-blue"><th style="width:30%"><h2>Addional Notes</h2></th><th></th></thead>
+    <thead class="w3-light-blue"><th style="width:30%" colspan="2"><h2>Addional Notes</h2></th></thead>
     <tr><td><textarea   name="note" rows="4" cols="80"></textarea> </td></tr>
   </table>
-<br>
-</div>
+  <br>
+  </div>
 
-<div id ="pharmacies" class="w3-third  w3-striped w3-bordered w3-border">
-  <h1 class="w3-light-blue">Choose a Pharmacy</h1>
-  <p>Pharmacies nearest to patient:</p>
+  <div id ="pharmacies" class="w3-third  w3-striped w3-bordered w3-border">
+    <h3 class="w3-light-blue">Choose a Pharmacy</h3>
+    <p>Pharmacies nearest to patient:</p>
+  </div>
 
-
- </div>
- <input type="hidden" name="tim" value="<%=Time.now.strftime("%d/%m/%Y %H:%M")%>">
-<%= f.submit "Create Prescription",class:"w3-btn-block w3-light-blue" %>
+  <input type="hidden" name="tim" value="<%=Time.now.strftime("%d/%m/%Y %H:%M")%>">
+  <br />
+  <%= f.submit "Create Prescription",class:"w3-btn-block w3-light-blue" %>
 </div>
 
 <% end %>
