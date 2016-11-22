@@ -19,6 +19,7 @@ class PatientsController < ApplicationController
       @patient = current_user.patients.find_or_create_by(patient_params)
       @patient.user = current_user
       @patient.save
+      AlertScheduler.send_initial_msg(@patient)
     end
   redirect_to user_patients_path(current_user)
 end
