@@ -1,6 +1,6 @@
 <%= link_to "Edit Medical History", edit_user_patient_path(@patient.user, @patient) %>
 <br></br>
-
+<a data-confirm="Are you sure?" data-method="delete" href="/users/<%=current_user.id%>/patients/<%=@patient.id%>">Delete</a>
 <%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
 <br></br>
 
@@ -34,3 +34,12 @@ Concerns: <%= @patient.note %>
 Current Medications
 <br></br>
 <%= @patient.medical_history %>
+
+<div id="prescription_info">
+  <h2>Last Prescription(s)</h2>
+  <% if @patient.prescriptions %>
+  <% @patient.prescriptions.each do |prescription| %>
+          <%= link_to "#{prescription.experition_date}", prescription_path(prescription)%>
+        <% end %>
+  <% end %>
+</div>
