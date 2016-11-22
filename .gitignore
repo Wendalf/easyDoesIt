@@ -17,8 +17,11 @@
 .byebug_history
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> baf26efa4e00a394595e565b82e5a4e4e35285fb
 # Ignore .env file
 .env
 app/.env
