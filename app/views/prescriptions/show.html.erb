@@ -39,7 +39,7 @@
     <% @prescription.drugs.each do |drug| %>
     <input id="drug_id" type="hidden" name="drug_id" value="<%=drug.id%>">
 
-      <tr><td><%=drug.name%></td><td><%=drug.drug_prescriptions.first.refill%></td><td><button onclick="document.getElementById('id01').style.display='block'" class="customize_button"> Set Alert</button></td><td id="set_alerts"></td></tr>
+      <tr><td><%=drug.name%></td><td><%=drug.drug_prescriptions.first.refill%></td><td><button onclick="document.getElementById('id01').style.display='block'" class="customize_button"> Set Alert</button></td><td id="set_alerts"><%= drug.alerts.map{|x|x.time.strftime("%H:%M" )}.join(', ')%></td></tr>
 
     <% end %>
     </table>
