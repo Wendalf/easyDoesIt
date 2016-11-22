@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
 <div class="w3-container w3-light-blue  w3-margin-bottom">
+  <%= form_for(@prescription) do |f| %>
 <h1>New Prescription For <%=@patient.name%></h1>
 <input id="patient_id" type="hidden" name="patient[id]" value="<%=@patient.id%>">
 <input id="hidden_address" type="hidden" value="<%=@patient.address%>">
@@ -19,7 +20,7 @@
 
 
 </div>
-<%= form_for(@prescription) do |f| %>
+
 <h4>Prescription Experation Date: <input type="date" name="prescription[experition_date]"></h4>
 <div class="w3-row-padding ">
 <input id="chosen_pharam_name" type="hidden" name="pharmacy[name]" value="">
