@@ -45,6 +45,15 @@ class PrescriptionsController < ApplicationController
     end
   end
 
+  def drug_alerts
+    @drug = params[:drug]
+    @patient = params[:patient]
+    @alerts = Alerts.find_by(drug_id: @drug, patient_id: @user)
+    respond_to do |f|
+        f.json{render :json => @alerts.to_json}
+    end
+  end
+
 
   private
 
