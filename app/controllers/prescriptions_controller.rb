@@ -35,6 +35,7 @@ class PrescriptionsController < ApplicationController
 
   def show
     @prescription = Prescription.find_by(id: params[:id])
+    @drugs = 
   end
 
   def google_pharmacies

@@ -49,14 +49,11 @@ function patient(){
       "input": input,
     }
   }).done(function(data){
-  
     if(data.length !== 0){
         $("#patient_list ul").html('')
     for(var i=0; i<data.length; i++){
 
       $("#patient_list ul").append(`<br><a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a></br>`);
-
-
     }
   }else{
       $("#patient_list ul").html('')
@@ -139,8 +136,12 @@ function setAlert(){
           "drug_id":drugId
         }
       }).done(function(data){
-
+        var alerts = []
         if (data){
+        alerts.push(` ${data[0].time.slice(11,16)},`)
+        alerts.push(` ${data[1].time.slice(11,16)},`)
+        alerts.push(` ${data[2].time.slice(11,16)}`)
+          $('td#set_alerts').append(alerts)
           $('span#closeClick').click();
           alert("Successfully set alert times.")
         }else{

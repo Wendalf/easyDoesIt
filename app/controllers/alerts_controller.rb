@@ -15,6 +15,7 @@ class AlertsController < ApplicationController
       f.json{render :json => @created_alerts.to_json}
     end
   end
+
 # =======
 #
 #
