@@ -48,6 +48,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     chronic (0.10.2)
+    coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -128,6 +129,10 @@ GEM
     prawn (2.1.0)
       pdf-core (~> 0.6.1)
       ttfunk (~> 1.4.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -172,6 +177,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     session (3.2.0)
+    slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -219,13 +225,23 @@ GEM
       rush
 
 PLATFORMS
+  bootstrap-unknown
+  coffee-unknown
+  jquery-unknown
+  jspdf-unknown
+  rb-unknown
   ruby
+  sass-unknown
+  spring-unknown
+  twilio-unknown
+  tzinfo-unknown
+  unknown
+  web-unknown
+  wkhtmltopdf-unknown
 
-
+DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
-
   byebug
-
   coffee-rails (~> 4.2)
   daemons
   delayed_job_active_record
@@ -241,6 +257,7 @@ PLATFORMS
   pdfkit
   pg (~> 0.18)
   prawn
+  pry
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rb-readline
