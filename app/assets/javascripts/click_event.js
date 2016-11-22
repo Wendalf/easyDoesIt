@@ -150,3 +150,22 @@ function setAlert(){
         }
       });
 }
+
+
+//
+// def showAlerts(patientId, drugId){
+//   var patient = patientId;
+//   var drug = drugId;
+//   $.ajax({
+//     type: 'get',
+//     url: ,
+//     dataType: 'json',
+//     data: {
+//       "patient": patient,
+//       "drug": drug
+//     }
+//   }).done(function(data){
+//
+//   })
+//
+// }

@@ -35,7 +35,6 @@ class PrescriptionsController < ApplicationController
 
   def show
     @prescription = Prescription.find_by(id: params[:id])
-    @drugs = 
   end
 
   def google_pharmacies
@@ -43,6 +42,15 @@ class PrescriptionsController < ApplicationController
     @result = @client.spots(params["lat"],params["lng"], :types => 'pharmacy', :keyword => "walgreens", :radius => 500)
     respond_to do |f|
       f.json{render :json => @result.to_json}
+    end
+  end
+
+  def drug_alerts
+    @drug = params[:drug]
+    @patient = params[:patient]
+    @alerts = Alerts.find_by(drug_id: @drug, patient_id: @user)
+    respond_to do |f|
+        f.json{render :json => @alerts.to_json}
     end
   end
 
