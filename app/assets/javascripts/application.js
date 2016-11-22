@@ -20,3 +20,4 @@
 //= require 'jspdf'
 
 //= require signin
+//= require index

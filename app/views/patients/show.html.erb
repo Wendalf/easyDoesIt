@@ -5,8 +5,9 @@
 <br></br>
 
 
-Medical History
+<p class="medical-history">Medical History</p>
 
+<div class="patient-show">
 Name: <%= @patient.name%>
 <br>
 Age: <%= @patient.age %>
@@ -36,10 +37,11 @@ Current Medications
 <%= @patient.medical_history %>
 
 <div id="prescription_info">
-  <h2>Last Prescription(s)</h2>
+  <p>Last Prescription(s)</p>
   <% if @patient.prescriptions %>
   <% @patient.prescriptions.each do |prescription| %>
     <%= link_to "#{prescription.experition_date}", prescription_path(prescription)%>
   <% end %>
   <% end %>
+
 </div>
