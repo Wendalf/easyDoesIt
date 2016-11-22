@@ -1,6 +1,5 @@
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<%= render "/layouts/nav" %>
+<br></br>
 
 <div id="container" class="w3-container w3-center" style="height: 100px">
   <div class="w3-container w3-light-blue  w3-margin-bottom">
@@ -24,7 +23,7 @@
 
   <div class=" w3-twothird">
     <table id="userInfo" class="w3-table w3-striped w3-bordered w3-border">
-    <thead class="w3-light-blue "><th style="width:30%"><h2>Patient Info</h2></th><th></th></thead>
+      <thead class="w3-light-blue "><th style="width:30%" colspan="2"><h1>Patient Info</h1></th></thead>
     <tr><td style="width:30%">Name:</td><td><%=@prescription.patient.name%></td></tr>
     <tr><td>Phone:</td><td><%=@prescription.patient.phone_number%></td></tr>
     <tr><td>Email:</td><td><%=@prescription.patient.email%></td></tr>
@@ -34,14 +33,12 @@
     <br>
 
     <table id= "drugform" class="w3-table w3-striped w3-bordered w3-border">
-    <thead class="w3-light-blue"><th style="width:30%"><h2>Medication</h2></th><th></th><th></th><th></th></thead>
-    <thead><th>Drug Name</th><th>Refills</th><th>Notify Patient</th><th>Alert Times</th></thead>
-    <% @prescription.drugs.each do |drug| %>
-    <input id="drug_id" type="hidden" name="drug_id" value="<%=drug.id%>">
-
-      <tr><td><%=drug.name%></td><td><%=drug.drug_prescriptions.first.refill%></td><td><button onclick="document.getElementById('id01').style.display='block'" class="customize_button"> Set Alert</button></td><td id="set_alerts"><%= drug.alerts.map{|x|x.time.strftime("%H:%M" )}.join(', ')%></td></tr>
-
-    <% end %>
+      <thead class="w3-light-blue"><th style="width:30%" colspan="4"><h1>Medication</h1></th></thead>
+      <thead><th>Drug Name</th><th>Refills</th><th>Notify Patient</th><th>Alert Times</th></thead>
+      <% @prescription.drugs.each do |drug| %>
+        <input id="drug_id" type="hidden" name="drug_id" value="<%=drug.id%>">
+        <tr><td><%=drug.name%></td><td><%=drug.drug_prescriptions.first.refill%></td><td><button onclick="document.getElementById('id01').style.display='block'" class="customize_button"> Set Alert</button></td><td id="set_alerts"><%= drug.alerts.map{|x|x.time.strftime("%H:%M" )}.join(', ')%></td></tr>
+      <% end %>
     </table>
     <br>
 
