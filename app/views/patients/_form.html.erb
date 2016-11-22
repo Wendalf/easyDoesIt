@@ -5,16 +5,15 @@
 <%end%>
 
 
+<h3>Patient Information</h3>
 
-
-
-<h1>Enter new Patient Information or Upload Medical History</h1>
+<br></br>
   <%= form_for(@patient) do |f| %>
   Name: <%= f.text_field :name %>
   <br>
   Height: <%= f.text_field :height %>
   <br>
-  Wegiht: <%= f.text_field :weight %>
+  Weight: <%= f.text_field :weight %>
   <br>
   Sex: <%= f.text_field :sex %>
   <br>
@@ -25,6 +24,8 @@
   Address: <%= f.text_field :address %>
   <br>
   Email: <%= f.text_field :email %>
+  <br>
+  Age: <%=f.text_field :age %>
   <br>
   Health Conditions: <%= f.text_field :health_history %>
   <br>

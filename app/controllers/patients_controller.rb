@@ -3,7 +3,6 @@ class PatientsController < ApplicationController
   require 'csv'
 
   def new
-
     @user = User.find_by(id: params[:user_id])
     @patient = Patient.new
     render "new"
@@ -11,6 +10,7 @@ class PatientsController < ApplicationController
 
 
   def create
+
     if params[:leads]
       CSV.foreach(params[:leads].path, headers: true) do |lead|
         @patient = current_user.patients.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
@@ -75,7 +75,7 @@ end
   end
 
 def download_csv
-  binding.pry
+
   patients = params[:patients].split(',')
   @patients = current_user.patients.where(:name => patients)
   CSV.open("/Users/isuru/desktop/patients.csv", 'w') do |csv|
@@ -92,7 +92,7 @@ end
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :height, :weight, :sex, :phone_number, :address, :email, :health_history, :medical_history, :note, :dob)
+    params.require(:patient).permit(:name, :height, :weight, :sex, :phone_number, :address, :email, :health_history, :age, :medical_history, :note, :dob)
 
   end
 end
