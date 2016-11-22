@@ -14,11 +14,9 @@
 <input id="patient_id" type="hidden" name="patient[id]" value="<%=@patient.id%>">
 <input id="hidden_address" type="hidden" value="<%=@patient.address%>">
 
-
-<h4>Prescription Experation Date: <input type="date" name="experiation"></h4>
 </div>
 <%= form_for(@prescription) do |f| %>
-
+<h4>Prescription Experation Date: <input type="date" name="prescription[experition_date]"></h4>
 <div class="w3-row-padding ">
 <input id="chosen_pharam_name" type="hidden" name="pharmacy[name]" value="">
 <input id="chosen_pharam_address" type="hidden" name="pharmacy[address]" value="">
@@ -26,7 +24,7 @@
 
 <div class="w3-twothird">
   <table id="userInfo" class="w3-table w3-striped w3-bordered w3-border">
-  <thead class="w3-light-blue "><th style="width:30%"><h2>Patient Information</h2></th><th></th></thead>
+  <thead class="w3-light-blue "><th style="width:30%"><h2>Patient Info</h2></th><th></th></thead>
   <tr><td style="width:30%">Name:</td><td><%=@patient.name%></td></tr>
   <tr><td>Phone:</td><td><%=@patient.phone_number%></td></tr>
   <tr><td>Email:</td><td><%=@patient.email%></td></tr>
@@ -60,6 +58,7 @@
 
 
  </div>
+ <input type="hidden" name="tim" value="<%=Time.now.strftime("%d/%m/%Y %H:%M")%>">
 <%= f.submit "Create Prescription",class:"w3-btn-block w3-light-blue" %>
 </div>
 

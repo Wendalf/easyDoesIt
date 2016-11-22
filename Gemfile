@@ -50,7 +50,7 @@ gem 'faraday'
 gem 'devise'
 
 gem 'rb-readline'
-gem 'pry-coolline'
+
 gem 'figaro'
 
 # Use Redis adapter to run Action Cable in production
@@ -64,10 +64,10 @@ gem 'figaro'
 group :development, :test do
   gem 'faker', '~> 1.6', '>= 1.6.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug', platform: :mri
+  gem 'byebug', platform: :mri
 
   # Use pry do debug.
-  gem 'pry'
+  # gem 'pry'
 end
 
 group :development do

@@ -4,11 +4,11 @@ class AlertsController < ApplicationController
   def create
     @patient = Patient.find(params[:patient_id])
     @drug = Drug.find(params[:drug_id])
-    @timeOne = params[:alert1]; @timeTwo = params[:alert2]; @timeThree = params[:alert3]
-
+    @timeOne = params[:alert1].to_datetime; @timeTwo = params[:alert2].to_datetime; @timeThree = params[:alert3].to_datetime
+    
     @alertOne = Alert.create(time:@timeOne, patient:@patient, drug:@drug)
-    @alertTwo = Alert.create(time:@timeOne, patient:@patient, drug:@drug)
-    @alertThree = Alert.create(time:@timeOne, patient:@patient, drug:@drug)
+    @alertTwo = Alert.create(time:@timeTwo, patient:@patient, drug:@drug)
+    @alertThree = Alert.create(time:@timeThree, patient:@patient, drug:@drug)
 
     @created_alerts = [@alertOne,@alertTwo,@alertThree]
 
@@ -20,25 +20,25 @@ class AlertsController < ApplicationController
 #
 #
 #
-#   def new
-#   end
-#
-#
-#   def create
-#
-#     t = params["time"]
-#     t.each do |time|
-#       if time != ""
-#        result = time.to_datetime
-#        @alert = Alert.create(time: result, patient_id: params["patient_id"], drug_id: params["drug_id"], prescription_id: params["prescription_id"])
-#       end
-#     end
-#     redirect_to user_patient_path(@alert.patient.user, @alert.patient)
-#   end
-#
-#
-#
-#   private
+  # def new
+  # end
+
+
+  # def create
+
+  #   t = params["time"]
+  #   t.each do |time|
+  #     if time != ""
+  #      result = time.to_datetime
+  #      @alert = Alert.create(time: result, patient_id: params["patient_id"], drug_id: params["drug_id"], prescription_id: params["prescription_id"])
+  #     end
+  #   end
+  #   redirect_to user_patient_path(@alert.patient.user, @alert.patient)
+  # end
+
+
+
+  # private
 #
 #
 #

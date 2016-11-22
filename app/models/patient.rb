@@ -1,9 +1,10 @@
 class Patient < ApplicationRecord
   belongs_to :user
-  has_many :alerts
-  has_many :prescriptions
+  has_many :alerts, dependent: :destroy
+  has_many :prescriptions, dependent: :destroy
   has_many :drug_prescriptions, through: :prescriptions
-
+  validates :name, :medical_history, :height, :weight, :health_history, :phone_number,
+  :address, :age, :sex, :email, :dob, presence: true
 
 
   def send_message(msg)

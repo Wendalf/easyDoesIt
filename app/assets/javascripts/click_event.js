@@ -53,7 +53,11 @@ function patient(){
     if(data.length !== 0){
         $("#patient_list ul").html('')
     for(var i=0; i<data.length; i++){
+
       $("#patient_list ul").append(`<a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a>`);
+
+      $("#patient_list ul").append(`<a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a><br>`);
+
     }
   }else{
       $("#patient_list ul").html('')
@@ -67,12 +71,13 @@ function patient(){
 function download_patients(){
     event.preventDefault();
     var optionTexts = [];
-    var userId = $("#user_id").attr('value')
-  var patients = $("li").each(function() { optionTexts.push($(this).text()) });
+    var userId = $("#user_id").attr('value');
+  var patients = $("#patient_list a").each(function() { optionTexts.push($(this).text())});
+  var patients = $("#patient_list a").each(function() { optionTexts.push($(this))});
   for(var i =0; i<patients.length;i++){
     optionTexts.push(patients[i].innerHTML)
   }
-  var url =`http://localhost:3000/${userId}/download_csv`
+  var url =`/${userId}/download_csv`
       $.ajax({
         type: 'get',
         url: url,

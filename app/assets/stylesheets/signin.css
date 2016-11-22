@@ -196,7 +196,7 @@ video#bgvid {
 }
 .signin-form input[type="checkbox"]:checked+label span:first-child:before {
   content: "";
-  background: url(/assets/tick.png)no-repeat;
+  background: url("http://i.imgur.com/wD6iGG1.png")no-repeat;
   position: absolute;
   left: 2px;
   top: 2px;

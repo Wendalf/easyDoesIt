@@ -1,4 +1,13 @@
+
 <link rel="stylesheet" href="css/core.css">
+
+<h2> Welcome <%= @user.email%>. The Following Is List of Your Patients </h2>
+<input id="user_id" type="hidden" value="<%=current_user.id%>">
+<%= form_tag patients_path, multipart: true do %>
+<%= file_field_tag :leads %>
+<%= submit_tag "Upload CSV File" %>
+<%end%>
+
 
 <%= render "/layouts/nav" %>
 <br></br>
@@ -44,3 +53,38 @@
 <footer class="container-fluid text-center">
   <p>Contact Us</p>
 </footer
+
+<%= form_tag(user_patients_path(@user), :method => "get", id: "search-form") do %>
+<select class="sel" id="criteria">
+    <option value="all">All</option>
+    <option value="name">Name</option>
+    <option value="height">Height</option>
+    <option value="weight">Weight</option>
+    <option value="phone_number">Phone Number</option>
+    <option value="address">Address</option>
+    <option value="age">Age</option>
+    <option value="sex">Sex</option>
+    <option value="email">Email</option>
+    <option value="dob">Date of Birth</option>
+    <option value="medical_history">Medical History</option>
+  </select>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Patient", id: "search_patient"%>
+<button type="button" name="button" onclick="patient()">Search</button>
+
+<% end %>
+
+<br><br>
+
+
+
+<%= link_to "Add Patient", action: "new", :method => "get" %>
+<div id="patient_list">
+
+
+<ul>
+  <% @user.patients.each do |patient|%>
+  <a href="/users/<%=patient.user.id%>/patients/<%=patient.id%>"><%=patient.name%></a><br>
+  <%end%>
+</ul>
+</div>
+<button class="dlBtn" type="button" name="button" onclick="download_patients()">Download</button>
