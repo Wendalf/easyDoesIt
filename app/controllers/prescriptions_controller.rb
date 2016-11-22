@@ -11,7 +11,8 @@ class PrescriptionsController < ApplicationController
 
 
   def create
-      @prescription = Prescription.create(experition_date: params["experiation"], pharmacy_name: params[:pharmacy][:name], pharmacy_address:params[:pharmacy][:address], notes:params[:note], diagnosis:params[:diagnosis])
+
+      @prescription = Prescription.create(experition_date: params["prescription"]["experition_date"], pharmacy_name: params[:pharmacy][:name], pharmacy_address:params[:pharmacy][:address], notes:params[:note], diagnosis:params[:diagnosis])
       patient= Patient.find_by(id: params["pharmacy"]["patient"])
       @prescription.patient_id = patient.id
       @prescription.save
@@ -48,7 +49,7 @@ class PrescriptionsController < ApplicationController
   private
 
   def prescription_params
-    params.require(:prescription).permit(:bday)
+    params.require(:prescription).permit(:experition_date)
   end
 
   def drug_params

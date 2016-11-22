@@ -62,7 +62,7 @@ gem 'figaro'
 group :development, :test do
   gem 'faker', '~> 1.6', '>= 1.6.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug', platform: :mri
+  gem 'byebug', platform: :mri
 
   # Use pry do debug.
   # gem 'pry'

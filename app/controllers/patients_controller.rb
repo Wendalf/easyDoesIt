@@ -16,7 +16,7 @@ class PatientsController < ApplicationController
         @patient = current_user.patients.create(name: lead[0] + " " + lead[1], dob: lead[2], height: lead[3], weight: lead[4], health_history: lead[5], medical_history: lead[6], sex: lead[7], age: lead[8], email: lead[9], phone_number: lead[10], address: lead[11])
       end
     else
-      @patient = current_user.patients.create(patient_params)
+      @patient = current_user.patients.find_or_create_by(patient_params)
       @patient.user = current_user
       @patient.save
     end
@@ -38,13 +38,10 @@ end
       if criteria
         if criteria == "all"
           @patients = current_user.patients.all
-        elsif criteria == "medical_history"
-          @patients = current_user.patients.all.where('medical_history LIKE ?', "%#{input}%").all
-        elsif criteria == "health_history"
-          @patients = current_user.patients.all.where('health_history LIKE ?', "%#{input}%").all
         else
-          @user = current_user
-          @patients = current_user.patients.where("#{criteria}" => ["#{input}"])
+          # @user = current_user
+          # @patients = current_user.patients.where("#{criteria}" => ["#{input}"])
+          @patients = current_user.patients.where("#{criteria} LIKE ?","%#{input}%").all
         end
         respond_to do |f|
           f.json{render :json => @patients.to_json}
@@ -64,6 +61,12 @@ end
     @patient = Patient.find_by(id: params[:id])
   end
 
+  def destroy
+    @patient = current_user.patients.find_by_id(params[:id])
+    @patient.destroy
+    redirect_to root_path
+  end
+
 
   def update
     @patient = Patient.find_by(id: params[:id])
@@ -71,19 +74,11 @@ end
     redirect_to user_patient_path(@patient)
   end
 
-
-
-
-
-
-
-
-
 def download_csv
-
+  binding.pry
   patients = params[:patients].split(',')
   @patients = current_user.patients.where(:name => patients)
-  CSV.open("patients.csv", 'w') do |csv|
+  CSV.open("/Users/isuru/desktop/patients.csv", 'w') do |csv|
     csv << Patient.column_names
     @patients.each do |m|
       csv << m.attributes.values
@@ -93,8 +88,6 @@ def download_csv
     f.json{render :json => @patients.to_json}
   end
 end
-
-
 
   private
 
