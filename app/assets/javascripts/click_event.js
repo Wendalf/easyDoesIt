@@ -49,14 +49,13 @@ function patient(){
       "input": input,
     }
   }).done(function(data){
-
+  
     if(data.length !== 0){
         $("#patient_list ul").html('')
     for(var i=0; i<data.length; i++){
 
-      $("#patient_list ul").append(`<a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a>`);
+      $("#patient_list ul").append(`<br><a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a></br>`);
 
-      $("#patient_list ul").append(`<a href="/users/${data[i].user_id}/patients/${data[i].id}">${data[i].name}</a><br>`);
 
     }
   }else{
